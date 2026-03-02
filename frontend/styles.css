@@ -1,0 +1,404 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: linear-gradient(135deg, #f9fafb, #e0f2fe);
+  color: #111827;
+}
+
+.app-container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.app-header h1 {
+  margin: 0 0 8px;
+  font-size: 1.7rem;
+}
+
+.subtitle {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.app-main {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  min-height: 460px;
+}
+
+.app-footer {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+.hint {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.grade-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.grade-tab {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.grade-tab.active {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+.level-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.grade-summary {
+  color: #6b7280;
+}
+
+.level-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.level-card {
+  border-radius: 10px;
+  padding: 10px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.level-title {
+  font-weight: 600;
+}
+
+.level-meta {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.level-status {
+  font-size: 0.8rem;
+}
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.05s ease, box-shadow 0.1s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.35);
+}
+
+.btn-primary:disabled {
+  background: #9ca3af;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid #d1d5db;
+}
+
+.btn-small {
+  padding: 4px 10px;
+  font-size: 0.8rem;
+}
+
+.btn-level-play {
+  margin-top: 4px;
+}
+
+.btn-level-play.locked {
+  background: #f9fafb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  box-shadow: none;
+  border: 1px dashed #e5e7eb;
+}
+
+.btn-level-play.completed {
+  background: #16a34a;
+  color: #ecfdf5;
+  box-shadow: 0 4px 10px rgba(22, 163, 74, 0.35);
+}
+
+.btn-level-play.partial {
+  background: #f97316;
+  color: #fff7ed;
+  box-shadow: 0 4px 10px rgba(249, 115, 22, 0.35);
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 8px;
+}
+
+.game-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  font-size: 0.9rem;
+}
+
+#game-timer {
+  font-weight: 600;
+  color: #dc2626;
+}
+
+#game-phase-label {
+  font-weight: 600;
+  color: #7c3aed;
+}
+
+.game-body {
+  margin-top: 16px;
+}
+
+.question-text {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+}
+
+.answer-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.answer-input {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+}
+
+.answer-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+}
+
+.feedback {
+  min-height: 1.4em;
+  font-size: 0.95rem;
+}
+
+.feedback.correct {
+  color: #16a34a;
+}
+
+.feedback.wrong {
+  color: #dc2626;
+}
+
+.result-extra {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.result-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.paper-section {
+  margin-top: 24px;
+  border-top: 1px dashed #e5e7eb;
+  padding-top: 16px;
+}
+
+.paper-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.paper-select {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+}
+
+.print-sheet {
+  margin-top: 12px;
+  padding: 12px;
+  background: #ffffff;
+  border: 1px dashed #d1d5db;
+  min-height: 400px;
+}
+
+.print-sheet-title {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.print-sheet-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+.print-sheet-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px 12px;
+  font-size: 0.9rem;
+}
+
+.print-question {
+  min-height: 1.4em;
+}
+
+
+@media (max-width: 640px) {
+  .app-main {
+    padding: 12px;
+  }
+
+  .game-info {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .level-list {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}
+
+@media print {
+  /* 使用常规方式：保留练习卷所在区域，隐藏其他模块，避免题目消失或多余空白页 */
+  @page {
+    margin: 10mm;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+  }
+
+  /* 隐藏除练习卷外的模块 */
+  .app-header,
+  .app-footer,
+  #screen-level-select,
+  #screen-game,
+  #screen-result,
+  .paper-controls,
+  .hint {
+    display: none !important;
+  }
+
+  .app-main {
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .paper-section {
+    margin: 0;
+    border: none;
+    padding: 0;
+  }
+
+  .print-sheet {
+    border: none;
+    padding: 0;
+    min-height: auto;
+  }
+
+  .print-sheet-title {
+    font-size: 18pt;
+    margin-bottom: 6mm;
+  }
+
+  .print-sheet-meta {
+    font-size: 11pt;
+    margin-bottom: 6mm;
+  }
+
+  .print-sheet-grid {
+    grid-template-columns: repeat(3, 1fr);
+    font-size: 14pt;
+    row-gap: 6mm;
+    column-gap: 10mm;
+  }
+
+  .print-question {
+    min-height: 1.6em;
+  }
+}
+

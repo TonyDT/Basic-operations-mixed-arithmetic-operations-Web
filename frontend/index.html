@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>小学数学闯关游戏 - 专项测试与打印</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1>小学数学闯关游戏</h1>
+      <p class="subtitle">1-6 年级 · 每关 30 题 · 错题训练 · 本地进度</p>
+    </header>
+
+    <main class="app-main">
+      <!-- 测试类型 & 关卡选择 -->
+      <section id="screen-level-select" class="screen active">
+        <h2>选择测试类型与关卡</h2>
+        <p class="hint">
+          说明：每关 30 题，主测阶段答对 <strong>25 题及以上</strong> 且 <strong>错题训练全部做对</strong> 才算通关并解锁下一关。
+          测试类型包括：基础专项（减法、加法、加减混合、乘法、除法、乘除混合）以及按年级划分的综合模块（1-2 年级混合口算、3 年级乘除与分配律、4 年级小数与分数简便、5 年级分数与百分数、6 年级综合与趣味）。
+        </p>
+
+        <div class="grade-tabs" id="test-type-tabs"></div>
+
+        <div class="level-header-row">
+          <span id="current-type-label"></span>
+          <span id="current-type-summary" class="grade-summary"></span>
+        </div>
+
+        <div id="level-list" class="level-list"></div>
+
+        <button id="reset-progress-btn" class="btn btn-secondary">清空本地全部进度（调试用）</button>
+      </section>
+
+      <!-- 答题界面 -->
+      <section id="screen-game" class="screen">
+        <div class="game-header">
+          <button id="back-to-levels-btn" class="btn btn-secondary btn-small">返回关卡列表</button>
+          <div class="game-info">
+            <span id="game-level-label"></span>
+            <span id="game-question-progress"></span>
+            <span id="game-timer"></span>
+            <span id="game-phase-label"></span>
+          </div>
+        </div>
+
+        <div class="game-body">
+          <div id="question-text" class="question-text"></div>
+          <div class="answer-area">
+            <input id="answer-input" type="number" inputmode="numeric" class="answer-input" placeholder="输入答案">
+            <button id="submit-answer-btn" class="btn btn-primary">提交</button>
+          </div>
+          <div id="feedback" class="feedback"></div>
+        </div>
+      </section>
+
+      <!-- 结果界面 -->
+      <section id="screen-result" class="screen">
+        <h2 id="result-title"></h2>
+        <p id="result-detail"></p>
+        <div id="result-extra" class="result-extra"></div>
+        <div class="result-actions">
+          <button id="retry-level-btn" class="btn btn-primary">重新挑战本关</button>
+          <button id="back-to-levels-from-result-btn" class="btn btn-secondary">返回关卡列表</button>
+        </div>
+      </section>
+
+      <!-- 纸质一键出题与打印 -->
+      <section id="screen-paper" class="paper-section">
+        <h2>纸质一键出题与打印</h2>
+        <p class="hint">
+          选择一种专项测试类型，一键生成一张 A4 练习卷（仅题目，不含答案），然后点击打印使用浏览器打印功能连接到打印机。
+        </p>
+        <div class="paper-controls">
+          <label for="paper-test-type-select">专项类型：</label>
+          <select id="paper-test-type-select" class="paper-select"></select>
+          <button id="generate-paper-btn" class="btn btn-secondary">生成 A4 练习卷</button>
+          <button id="print-paper-btn" class="btn btn-primary" disabled>打印</button>
+        </div>
+        <div id="print-sheet" class="print-sheet">
+          <!-- 生成后的 A4 练习卷题目将显示在这里，并在打印时自动适配页面 -->
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="app-footer">
+      <p>当前版本：本地单机版（专项测试、多关卡、错题训练、纸质一键出题打印）</p>
+      <p>后续将基于此结构接入：用户登录、MongoDB 云同步、排行榜、模拟支付等。</p>
+    </footer>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
+
